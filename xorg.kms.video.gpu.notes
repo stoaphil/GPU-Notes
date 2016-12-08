@@ -1,0 +1,112 @@
+VIDEO - xorg, drivers, graphics
+
+xorg
+
+    --  xorg.conf locations:
+
+        -   per xorg.conf page at www.x.org, showing man xorg.conf (5), many
+            places could be; can be named xorg.conf if file and or xorg.conf.d
+            if a directory
+
+            -   ALWAYS though will be in an X11 directory
+
+        -   gentoo:
+
+            -   /usr/share/X11/xorg.conf.d
+                /usr/share/X11/xorg.conf.d/10-evdev.conf
+                /usr/share/X11/xorg.conf.d/10-quirks.conf
+                /usr/share/X11/xorg.conf.d/50-synaptics.conf
+                /usr/share/doc/xorg-server-1.15.0/xorg.conf.example.bz2
+
+        -   crux
+
+            -   /etc/X11/xorg.conf.d
+                /etc/X11/xorg.conf.d/20-monitor.conf
+                /usr/share/X11/xorg.conf.d
+                /usr/share/X11/xorg.conf.d/10-evdev.conf
+                /usr/share/X11/xorg.conf.d/50-synaptics.conf                
+
+
+framebuffer/KMS
+
+    --  kernel modesetting means the kernel is responsible for setting up and 
+        changing the display mode: resolution, frequencies, and color, as
+        opposed to that being done in userspace.
+
+    --  there is a virtual console display driver (so I'm assuming regular 
+        nouveau, NVIDIA, etc., do not handle display at this level.)
+
+        -   some of the drivers are:
+
+            -   nouveaufb
+            -   vesafb
+            -   vga16fb
+            -   nvidiafb 
+            -   nvidia
+            -   the second two work to hand-off control to nouveaufb; the nvidia
+                do not; this is why when running proprietary nvidia driver get
+                large console fonts
+            -   the discussion above basically related to using nouveau; find
+                similar for amd and intel if necessary
+
+    --  see KMS documentation for further details
+
+    --  see archwiki/fonts for changing console font size (but really not 
+        necessary if fb is working properly - this is what reduces the huge 
+        fonts to the small fonts - and also adds the penguin (one per core) 
+        to display in console.)
+
+
+mesa
+
+    --  a collection of foss libraries that impliment openGL and other APIs
+        related to hardware-accelerated 3-D rendering and graphics.
+
+    --  openGL is one of these APIs
+
+    --  currently two frameworks to write graphics drivers:
+
+        --  DRI
+
+        --  gallium3D
+
+        --  here, graphics drivers seem to be device drivers, i.e., AMD, Intel, 
+            and NVIDIA
+
+
+gallium
+
+    --  see mesa
+
+
+glx
+
+    --  an API - see mesa
+
+
+openGL
+
+    --  an API - see mesa
+
+
+KMS
+
+    --  kernel modesetting - see framebuffer
+
+
+drivers
+
+    --  see archwiki xorg page for chart of proprietary drivers and their
+        opensource counterparts
+
+gpu and video cards
+
+    --  gpu - graphics processing unit
+
+        -   can be on a video card, the motherboard, or even on cpu die
+
+        -   Intel 50%, NVIDIA 28%, AMD/ATI 21%
+
+    --  video card - stand-alone - contains a gpu and other electronics
+
+        -   NVIDIA and AMD/ATI almost 100%
